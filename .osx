@@ -147,11 +147,11 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# Trackpad: do not map bottom right corner to right-click (disabled with these settings)
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool false
 
 # Trackpad: disable launchpad pinch with thumb and three fingers
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
@@ -536,19 +536,13 @@ sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# Use a Solarized Dark by default in Terminal.app https://github.com/tomislav/osx-terminal.app-colors-solarized
-open "$HOME/init/SolarizedDark.terminal"
-sleep 1 # Wait a bit to make sure the theme is loaded
-defaults write com.apple.terminal "Default Window Settings" -string "SolarizedDark"
-defaults write com.apple.terminal "Startup Window Settings" -string "SolarizedDark"
-
 # Enable “focus follows mouse” for Terminal.app and all X11 apps
 # i.e. hover over a window and start typing in it without clicking first
 # defaults write com.apple.terminal FocusFollowsMouse -bool true
 # defaults write org.x.X11 wm_ffm -bool true
 
 # Install pretty iTerm colors
-open "${HOME}/init/Mathias.itermcolors"
+open "${HOME}/code/iTerm2-Color-Schemes/schemes/Hybrid.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
