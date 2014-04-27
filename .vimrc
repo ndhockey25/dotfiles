@@ -1,4 +1,4 @@
-call pathogen#infect() 
+call pathogen#infect()
 colorscheme gruvbox
 set background=dark
 

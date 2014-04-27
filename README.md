@@ -1,13 +1,15 @@
 # Installation
 ```bash
 cd /path/to/repository
-./boostrap.sh
 ~/update-deps.sh
 
 # Only needs to be run once
 source ~/.osx
 brew bundle Brewfile
 brew bundle Caskfile
+
+# Finally bootstrap the dotfiles
+./boostrap.sh
 ```
 
 You can also change the iTerm color scheme from the preferences settings.
