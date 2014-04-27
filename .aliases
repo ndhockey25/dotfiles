@@ -151,3 +151,7 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 alias cat='pygmentize -O style=monokai -f console256 -g'
 
 alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
+alias next="spotify next"
+alias previous="spotify previous"
+alias play="spotify play"
+alias pause="spotify pause"
