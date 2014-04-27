@@ -49,7 +49,7 @@ printf "\n"
 
 printf "Adding iTerm color schemes\n"
 git-update iTerm2-Color-Schemes https://github.com/mbadolato/iTerm2-Color-Schemes
-print "\n"
+printf "\n"
 
 printf "Installing Pygments for cat syntax highlighting\n"
 sudo easy_install Pygments
