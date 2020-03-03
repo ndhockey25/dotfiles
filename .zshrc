@@ -1,6 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/bin:$PATH"
+export PATH=$HOME/.toolbox/bin:$PATH
 
+for file in ~/.{path,zsh_prompt,exports,aliases,extra}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/kachmarc/.oh-my-zsh"
 

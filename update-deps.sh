@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
-export BASE_DIR=~/code
+export BASE_DIR=~
 
 # Create base directory for all installs
 printf "Install source directory is $BASE_DIR\n"
 touch $BASE_DIR || mkdir $BASE_DIR
 cd $BASE_DIR
 printf "\n"
+
+printf "Installing om-my-zsh"
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+brew tap caskroom/fonts
+brew cask install font-hack-nerd-font
 
 printf "Installing homebrew if it does not already exist\n"
 hash brew 2>/dev/null || { ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; }
@@ -23,18 +29,6 @@ function git-update() {
   if cd $repository 2>&1 1>/dev/null; then printf "$repository already exists. Getting latest version\n"; git pull; else git clone $remote_url; fi
   cd $BASE_DIR
 }
-
-# https://github.com/rupa/z
-printf "Fetching z\n"
-git-update z git://github.com/rupa/z.git
-chmod +x $BASE_DIR/z/z.sh
-printf "\n"
-
-# https://github.com/dronir/SpotifyControl
-# Spotify Controll Script
-printf "Fetching SpotifyControl\n"
-git-update SpotifyControl git://github.com/dronir/SpotifyControl.git
-printf "\n"
 
 printf "Install Pathogen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle; \
