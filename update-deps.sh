@@ -8,12 +8,6 @@ touch $BASE_DIR || mkdir $BASE_DIR
 cd $BASE_DIR
 printf "\n"
 
-printf "Installing om-my-zsh"
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-brew tap caskroom/fonts
-brew cask install font-hack-nerd-font
-
 printf "Installing homebrew if it does not already exist\n"
 hash brew 2>/dev/null || { ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; }
 printf "\n"
@@ -30,6 +24,15 @@ function git-update() {
   cd $BASE_DIR
 }
 
+brew install wget
+
+printf "Installing oh-my-zsh"
+wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+brew tap caskroom/fonts
+brew cask install font-hack-nerd-font
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
 printf "Install Pathogen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle; \
 curl -LSso ~/.vim/autoload/pathogen.vim \
@@ -44,6 +47,9 @@ printf "\n"
 printf "Adding iTerm color schemes\n"
 git-update iTerm2-Color-Schemes https://github.com/mbadolato/iTerm2-Color-Schemes
 printf "\n"
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 printf "Installing Pygments for cat syntax highlighting\n"
 sudo easy_install Pygments

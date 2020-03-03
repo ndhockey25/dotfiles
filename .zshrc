@@ -21,10 +21,6 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 # Add a space in the first prompt
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
-local user_symbol="$"
-if [[ $(print -P "%#") =~ "#" ]]; then
-    user_symbol = "#"
-fi
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
 
 # Set list of themes to pick from when loading at random
@@ -85,9 +81,7 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbo
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-         zsh-autosuggestions
-)
+plugins=(git aws virtualenv python pyenv colorize zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,5 +116,18 @@ echo -e "\033]6;1;bg;red;brightness;18\a"
 echo -e "\033]6;1;bg;green;brightness;26\a"
 echo -e "\033]6;1;bg;blue;brightness;33\a"
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.bash_profile
+POWERLEVEL9K_DISABLE_RPROMPT=false
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='teal'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=".."
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_VCS_GIT_HOOKS=false
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir dir_writable)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs time)
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
+POWERLEVEL9K_VCS_HIDE_TAGS=true
+POWERLEVEL9K_HOME_ICON=''
+POWERLEVEL9K_HOME_SUB_ICON='\UF07C'
+POWERLEVEL9K_FOLDER_ICON='\UF07B'
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
